@@ -1,0 +1,38 @@
+/* reset */
+* {margin: 0;padding: 0;box-sizing: border-box;}
+a {text-decoration: none;color: inherit;}
+img, video, audio, iframe {display: block;max-width: 100%;}
+ul, li {list-style: none;}
+figure {width: fit-content;height: fit-content;}
+table, th, td {border-collapse: collapse; border-spacing: 0;}
+
+.wrap {
+    width: 100%;
+    height: 100vh;
+    background-color: #fff;
+}
+.wrap .inner {
+    width: 100%;
+    height: 100%;
+    background-image: url('https://images.unsplash.com/photo-1514454529242-9e4677563e7b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    isolation: isolate;
+}
+
+.wrap .inner::after {
+    content: '';
+    position: absolute;
+    background-color: #111;
+    z-index: -1;
+    inset: 0;
+    opacity: 0.1;
+}
+
+.location {
+    max-width: 1400px;
+    height: 100%;
+    margin: auto;
+    color: #fff;
+}
