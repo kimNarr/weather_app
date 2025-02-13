@@ -5,11 +5,11 @@ const fetchForecast = (queryData) => {
     const lat = queryData.queryKey[1];
     const lon = queryData.queryKey[2];
     const city = queryData.queryKey[3];
+    const api_key = '3313832e522f83b469cbd6d38a387a92';
     if(lat && lon && city === '') {
-        const api_key = '3313832e522f83b469cbd6d38a387a92';
-        return axios.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${api_key}&lang=kr&units=metric`)
-    } else  {
-        console("error")
+        return axios.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${api_key}&units=metric`)
+    } if (city !== '')  {
+        return axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${api_key}&units=metric`)
     }
 }
 

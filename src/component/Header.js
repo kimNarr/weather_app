@@ -4,8 +4,6 @@ function Header({data, setCity}) {
     const [viewSearch, setViewSearch] = useState(false);
     const [inputCity, setInputCity] = useState('');
 
-    console.log('inputCity', inputCity)
-
     const searchSubmit = (e) => {
         e.preventDefault();
         setCity(inputCity);
@@ -19,7 +17,7 @@ function Header({data, setCity}) {
                 <div className='title_box'>
                     <div className='text'>
                         <h2>{data?.name}</h2>
-                        <p>today <span>2025.02.12</span></p>
+                        <p>today</p>
                     </div>
                     <div className='icon' onClick={()=>setViewSearch(true)}>
                         <img src="./img/icon/search.svg" alt="search" />

@@ -7,9 +7,9 @@ const fetchWeather = (queryData) => {
     const city = queryData.queryKey[3];
     const api_key = '3313832e522f83b469cbd6d38a387a92';
     if(lat && lon && city === '') {
-        return axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${api_key}&lang=kr&units=metric`)
+        return axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${api_key}&units=metric`)
     } if (city !== '')  {
-        return axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}&lang=kr&units=metric`)
+        return axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}&units=metric`)
     }
 }
 
@@ -20,6 +20,7 @@ export const useWeatherQuery = (lat, lon, city) => {
         select : (data) => {return data.data},
         retry : 1,
         gcTime : 5000*50,
+        staleTime: 4000*50,
         refetchIntervalInBackground: false
     })
 }

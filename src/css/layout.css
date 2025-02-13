@@ -9,9 +9,9 @@ figure {width: fit-content;height: fit-content;}
 table, th, td {border-collapse: collapse; border-spacing: 0;}
 
 body {
+    font-family: "Noto Sans KR", serif;
     color: #28303d;
     background-color: #fff;
-    font-family: "Noto Sans KR", serif;
 }
 
 .wrap {
@@ -43,9 +43,9 @@ header .title_box {
 }
 header .title_box .text > h2 {
     display: inline-block;
-    font-size: 130px;
+    font-size: 100px;
     letter-spacing: -4px;
-    margin-bottom: 60px;
+    margin-bottom: 40px;
 }
 header .title_box .text > p {
     font-size: 18px;
@@ -59,7 +59,7 @@ header .title_box .icon {
     cursor: pointer;
 }
 header .title_box .icon > img {
-    width: 100px;
+    width: 60px;
 }
 
 header .search_box {
@@ -69,7 +69,7 @@ header .search_box {
     left: 50%;
     transform: translateX(-50%);
     width: calc(100% - 32px);
-    height: calc(100% - 50px);
+    height: calc(100% - 40px);
     background-color: #f1f1f1;
 }
 
@@ -82,7 +82,7 @@ header .search_box input[type='text'] {
     height: 100%;
     border: none;
     outline: none;
-    font-size: 100px;
+    font-size: 72px;
     padding: 0 100px 0 20px;
     background-color: #fff;
     border: 5px solid #28303d;
@@ -112,7 +112,7 @@ header .search_box form > button {
 }
 
 header .search_box form > button > img {
-    width: 90px;
+    width: 60px;
     
 }
 
@@ -141,9 +141,20 @@ header .search_box > button > img {
     padding: 0 16px;
 }
 .contents .main_info {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.contents .main_info::after {
+    content: '';
+    position: absolute;
+    bottom:0;
+    left: 0;
+    width: 30px;
+    height: 30px;
+    border-left: 5px solid #28303d;
+    border-bottom: 5px solid #28303d;
 }
 .contents .main_info .main_weather {
     display: flex;
@@ -155,6 +166,10 @@ header .search_box > button > img {
 .contents .main_info .main_weather > figure > img {
     width: 150px;
 }
+.contents .main_info .main_weather .desc {
+    font-size: 24px;
+    font-weight: 900;
+}
 .contents .main_info .main_weather .temp {
     font-size: 64px;
     font-weight: 900;
@@ -163,6 +178,7 @@ header .search_box > button > img {
 
 
 .contents .sub_info {
+    position: relative;
     width: 100%;
 }
 .contents .sub_info .sub_weather {
@@ -184,7 +200,7 @@ header .search_box > button > img {
     display: flex;
     justify-content: flex-start;
     column-gap: 24px;
-    margin-bottom: 48px;
+    margin-bottom: 36px;
 }
 .contents .sub_info .sub_weather .weather > ul > li {
     display: flex;
@@ -193,10 +209,7 @@ header .search_box > button > img {
     column-gap: 16px;
 }
 .contents .sub_info .sub_weather .weather > ul > li > figure > img {
-    width: 16px;
-}
-.contents .sub_info .sub_weather .weather > ul > li:last-child > figure > img {
-    width: 22px;
+    width: 32px;
 }
 .contents .sub_info .sub_weather .weather > ul > li > p {
     font-size: 16px;
@@ -212,9 +225,49 @@ header .search_box > button > img {
     border-bottom: 5px solid #28303d;
 }
 .contents .sub_info .sub_weather .forecast > ul {
-    display: flex;
-    justify-content: flex-start;
-    column-gap: 24px;
-    margin-bottom: 48px;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 10px;
+    margin-bottom: 36px;
 }
-.contents .sub_info .sub_weather .forecast > ul > li {}
+.contents .sub_info .sub_weather .forecast > ul > li {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 8px;
+    border: 2px solid #28303d;
+}
+.contents .sub_info .sub_weather .forecast > ul > li .time {
+    font-size: 16px;
+    font-weight: 900;
+}
+.contents .sub_info .sub_weather .forecast > ul > li > figure > img {
+    width: 32px;
+}
+.contents .sub_info .sub_weather .forecast > ul > li .temp {
+    font-size: 16px;
+    font-weight: 900;
+    margin-left: 8px;
+}
+
+.contents .sub_info .sub_weather .forecast .cities {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 16px;
+}
+.contents .sub_info .sub_weather .forecast .cities button {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: capitalize;
+    padding: 8px;
+    border: 2px solid #28303d;
+    background-color: #fff;
+    cursor: pointer;
+}
+.contents .sub_info .sub_weather .forecast .cities button.active {
+    color: #fff;
+    background-color: #28303d;
+}

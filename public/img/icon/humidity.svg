@@ -1,14 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26.03 38.17">
-  <defs>
-    <style>
-      .cls-1 {
-        fill: #28303d;
-        stroke-width: 0px;
-      }
-    </style>
-  </defs>
-  <g id="icons">
-    <path id="water" class="cls-1" d="m0,25.15c0,7.19,5.83,13.02,13.02,13.02s13.01-5.83,13.01-13.02S13.02,0,13.02,0C13.02,0,0,17.84,0,25.15Z"/>
-  </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#28303d"><path d="M480-100q-133 0-226.5-92T160-416q0-63 24.5-120.5T254-638l226-222 226 222q45 44 69.5 101.5T800-416q0 132-93.5 224T480-100ZM240-416h480q0-47-18-89.5T650-580L480-748 310-580q-34 32-52 74.5T240-416Z"/></svg>

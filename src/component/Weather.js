@@ -7,10 +7,7 @@ function Weather() {
     const [lat, setLat] = useState();
     const [lon, setLon] = useState();
     const [city, setCity] = useState('');
-
-    console.log("city", city);
     
-
     const getCurrentLoaction = () => {
         navigator.geolocation.getCurrentPosition((position)=>{
             let lat = position.coords.latitude;
@@ -24,13 +21,9 @@ function Weather() {
         getCurrentLoaction();
     }, [])
 
-    // const date = new Date(1739242800*1000 - 32400000);
-    // const date = new Date().getTime();
-    // console.log(date)
-
-
     const {data, isLoading, isError, error} = useWeatherQuery(lat, lon, city);
     console.log("weather", data)
+
     return (
         <div className='inner'>
             <Header data={data} setCity={setCity}/>
@@ -38,8 +31,9 @@ function Weather() {
                 <div className='main_info'>
                     <div className='main_weather'>
                         <figure>
-                            <img src="./img/icon/clear.svg" alt="clear" />
+                            <img src={`./img/icon/${data?.weather[0].main}.svg`} alt={data?.weather[0].main} />
                         </figure>
+                        <p className='desc'>{data?.weather[0].description}</p>
                         <p className='temp'>{data?.main.temp}°</p>
                     </div>
                 </div>
@@ -53,16 +47,16 @@ function Weather() {
                                     <p>{data?.main.humidity}%</p>
                                 </li>
                                 <li>
-                                    <figure><img src="./img/icon/temperature.svg" alt="humidity" /></figure>
+                                    <figure><img src="./img/icon/temperature.svg" alt="temperature" /></figure>
                                     <p>{data?.main.temp}℃</p>
                                 </li>
                                 <li>
-                                    <figure><img src="./img/icon/wind.svg" alt="humidity" /></figure>
+                                    <figure><img src="./img/icon/air.svg" alt="air" /></figure>
                                     <p>{data?.wind.speed}</p>
                                 </li>
                             </ul>
                         </div>
-                        <Forecast lat={lat} lon={lon} city={city}/>
+                        <Forecast lat={lat} lon={lon} city={city} setCity={setCity}/>
                     </div>
                 </div>
             </div>
