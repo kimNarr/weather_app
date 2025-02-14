@@ -264,6 +264,7 @@ header .search_box > button > img {
     font-size: 14px;
     font-weight: 700;
     text-transform: capitalize;
+    color: #28303d;
     padding: 8px;
     border: 2px solid #28303d;
     background-color: #fff;
