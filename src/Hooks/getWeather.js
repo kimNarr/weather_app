@@ -21,6 +21,6 @@ export const useWeatherQuery = (lat, lon, city) => {
         retry : 1,
         gcTime : 5000*50,
         staleTime: 4000*50,
-        refetchIntervalInBackground: false
+        enabled: !!(lat && lon),
     })
 }

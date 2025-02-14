@@ -20,6 +20,6 @@ export const useForecastQuery = (lat, lon, city) => {
         select : (data) => {return data.data},
         retry : 1,
         gcTime : 5000*50,
-        refetchIntervalInBackground: false
+        enabled: !!(lat && lon),
     })
 }

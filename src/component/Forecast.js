@@ -4,7 +4,7 @@ import { useForecastQuery } from '../Hooks/getForecast'
 function Forecast({lat, lon, city, setCity}) {
 
     const {data, isLoading, isError, error} = useForecastQuery(lat, lon, city)
-    console.log("forecast",data)
+    
 
     const cities = [
         {id: 0, name: 'Seoul'},
@@ -14,7 +14,7 @@ function Forecast({lat, lon, city, setCity}) {
         {id: 4, name: 'Busan'},
         {id: 5, name: 'Gwangju'},
         {id: 6, name: 'Ulsan'},
-        {id: 7, name: 'Gangneung'},
+        {id: 7, name: 'London'},
     ]
 
 

@@ -3,9 +3,10 @@ import Weather from './component/Weather'
 import './css/layout.css'
 
 
+
 function App() {
     return (
-        <div className='wrap'>
+        <div className='app'>
             <Weather />
         </div>
     )
