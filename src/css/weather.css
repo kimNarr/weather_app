@@ -1,30 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
-
-/* reset */
-* {margin: 0;padding: 0;box-sizing: border-box;}
-a {text-decoration: none;color: inherit;}
-img, video, audio, iframe {display: block;max-width: 100%;}
-ul, li {list-style: none;}
-figure {width: fit-content;height: fit-content;}
-table, th, td {border-collapse: collapse; border-spacing: 0;}
-
-
-body {
-    font-family: "Noto Sans KR", serif;
-}
-
-.wrap {
+.weather_wrap {
     width: 100%;
-    height: 100vh;
+    height: calc(100vh - 68px);
     color: #28303d;
     background: #fff;
 }
 
-.wrap > .inner {
+.weather_wrap > .inner {
     max-width: 1400px;
     height: 100%;
     margin: auto;
-    padding: 100px 0;
+    padding: 50px 0;
 }
 
 header {
@@ -86,7 +71,7 @@ header .search_box input[type='text'] {
     font-size: clamp(32px, 3.75vw, 72px);
     padding: 0 100px 0 20px;
     background: #fff;
-    border: 5px solid #28303d;
+    border: 3px solid #28303d;
     z-index: 1;
 }
 
@@ -154,8 +139,8 @@ header .search_box > button > img {
     left: 0;
     width: 30px;
     height: 30px;
-    border-left: 5px solid #28303d;
-    border-bottom: 5px solid #28303d;
+    border-left: 3px solid #28303d;
+    border-bottom: 3px solid #28303d;
 }
 .contents .main_info .main_weather {
     display: flex;
@@ -195,7 +180,7 @@ header .search_box > button > img {
     text-transform: uppercase;
     padding-bottom: 8px;
     margin-bottom: 24px;
-    border-bottom: 5px solid #28303d;
+    border-bottom: 3px solid #28303d;
 }
 .contents .sub_info .sub_weather .weather > ul {
     display: flex;
@@ -207,10 +192,10 @@ header .search_box > button > img {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    column-gap: 16px;
+    column-gap: 8px;
 }
 .contents .sub_info .sub_weather .weather > ul > li > figure > img {
-    width: 32px;
+    width: 28px;
 }
 .contents .sub_info .sub_weather .weather > ul > li > p {
     font-size: 16px;
@@ -223,7 +208,7 @@ header .search_box > button > img {
     text-transform: uppercase;
     padding-bottom: 8px;
     margin-bottom: 24px;
-    border-bottom: 5px solid #28303d;
+    border-bottom: 3px solid #28303d;
 }
 .contents .sub_info .sub_weather .forecast > ul {
     display: grid;
@@ -277,73 +262,54 @@ header .search_box > button > img {
 
 /* night */
 
-.wrap.night {
+.weather_wrap.night {
     color: #fff;
     background: #28303d;
 }
 
-.wrap.night img {
+.weather_wrap.night img {
     filter: invert(96%) sepia(100%) saturate(12%) hue-rotate(237deg) brightness(103%) contrast(103%);
 }
 
-.wrap.night header .search_box input[type='text'] {
+.weather_wrap.night header .search_box input[type='text'] {
     color: #fff;
     background: #28303d;
-    border: 5px solid #fff;
+    border: 3px solid #fff;
 }
 
-.wrap.night header .search_box input[type='text']::placeholder {
+.weather_wrap.night header .search_box input[type='text']::placeholder {
     color: #d3d3d3;
 }
 
-.wrap.night header .search_box > button {
+.weather_wrap.night header .search_box > button {
     background-color: #28303d;
 }
 
-.wrap.night .contents .main_info::after {
-    border-left: 5px solid #fff;
-    border-bottom: 5px solid #fff;
+.weather_wrap.night .contents .main_info::after {
+    border-left: 3px solid #fff;
+    border-bottom: 3px solid #fff;
 }
 
-.wrap.night .contents .sub_info .sub_weather .weather > h3 {
-    border-bottom: 5px solid #fff;
+.weather_wrap.night .contents .sub_info .sub_weather .weather > h3 {
+    border-bottom: 3px solid #fff;
 }
 
-.wrap.night .contents .sub_info .sub_weather .forecast > h3 {
-    border-bottom: 5px solid #fff;
+.weather_wrap.night .contents .sub_info .sub_weather .forecast > h3 {
+    border-bottom: 3px solid #fff;
 }
 
-.wrap.night .contents .sub_info .sub_weather .forecast > ul > li {
+.weather_wrap.night .contents .sub_info .sub_weather .forecast > ul > li {
     border: 2px solid #fff;
 }
 
-.wrap.night .contents .sub_info .sub_weather .forecast .cities button {
+.weather_wrap.night .contents .sub_info .sub_weather .forecast .cities button {
     color: #fff;
     border: 2px solid #fff;
     background: #28303d;
 }
-.wrap.night .contents .sub_info .sub_weather .forecast .cities button.active {
+.weather_wrap.night .contents .sub_info .sub_weather .forecast .cities button.active {
     color: #28303d;
     background: #fff;
-}
-
-/* loading */
-.loading {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* error */
-.error {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
 @media (max-width: 1400px) {
@@ -375,8 +341,8 @@ header .search_box > button > img {
     }
 }
 @media (max-width: 875px) {
-    .wrap > .inner {
-        padding: 80px 0;
+    .weather_wrap > .inner {
+        padding: 32px 0 100px 0;
     }
     header .title_box .icon > img {
         margin-bottom: 32px;
@@ -399,23 +365,21 @@ header .search_box > button > img {
 }
 
 @media (max-width: 610px) {
-    .wrap > .inner {
-        padding: 48px 0;
-    }
+    
     .contents .sub_info .sub_weather .forecast > ul {
         grid-template-columns: repeat(4, 1fr);
     }
 }
 
 @media (max-width: 540px) {
-    .wrap {
+    .weather_wrap {
         height: auto;
+    }
+    .weather_wrap > .inner {
+        padding: 16px 0 100px 0;
     }
     header .title_box .icon > img {
         margin-bottom: 38px;
-    }
-    .wrap > .inner {
-        padding: 48px 0;
     }
     header .search_box input[type='text'] {
         border: 2px solid #28303d;
@@ -433,6 +397,10 @@ header .search_box > button > img {
     .contents .sub_info {
         grid-column: 1/2;
     }
+    .contents .sub_info .sub_weather .weather > ul {
+        justify-content: center;
+        column-gap: 16px;
+    }
     .contents .sub_info .sub_weather .forecast > ul {
         grid-template-columns: repeat(4, 1fr);
     }
@@ -440,20 +408,15 @@ header .search_box > button > img {
         justify-content: flex-start;
     }
   
-    .wrap.night header .search_box input[type='text'] {
+    .weather_wrap.night header .search_box input[type='text'] {
         border: 2px solid #fff;
     }
     
-    .wrap.night .contents .main_info::after {
-        border-left: 2px solid #fff;
+    .weather_wrap.night .contents .sub_info .sub_weather .weather > h3 {
         border-bottom: 2px solid #fff;
     }
     
-    .wrap.night .contents .sub_info .sub_weather .weather > h3 {
-        border-bottom: 2px solid #fff;
-    }
-    
-    .wrap.night .contents .sub_info .sub_weather .forecast > h3 {
+    .weather_wrap.night .contents .sub_info .sub_weather .forecast > h3 {
         border-bottom: 2px solid #fff;
     }
     

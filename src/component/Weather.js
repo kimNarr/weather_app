@@ -3,11 +3,16 @@ import { useWeatherQuery } from '../Hooks/getWeather'
 import { MoonLoader } from 'react-spinners';
 import Header from './Header';
 import Forecast from './Forecast';
+import '../css/weather.css'
+import { useParams } from 'react-router-dom';
 
 function Weather() {
     const [lat, setLat] = useState();
     const [lon, setLon] = useState();
     const [city, setCity] = useState('');
+
+    const {params} = useParams();
+    console.log("w_params", params);
     
     const getCurrentLoaction = () => {
         navigator.geolocation.getCurrentPosition((position)=>{
@@ -50,7 +55,7 @@ function Weather() {
 
 
     return (
-        <div className={dayNight === 'd' ? 'wrap' : 'wrap night'}>
+        <div className={dayNight === 'd' ? 'weather_wrap' : 'weather_wrap night'}>
             <div className='inner'>
                 <Header data={data} setCity={setCity}/>
                 <div className='contents'>

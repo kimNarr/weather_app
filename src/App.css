@@ -1,38 +1,55 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+
+/* reset */
+* {margin: 0;padding: 0;box-sizing: border-box;}
+a {text-decoration: none;color: inherit;}
+img, video, audio, iframe {display: block;max-width: 100%;}
+ul, li {list-style: none;}
+figure {width: fit-content;height: fit-content;}
+table, th, td {border-collapse: collapse; border-spacing: 0;}
+
+body {
+    font-family: "Noto Sans KR", serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.nav {
+    display: none;
+    height: 68px;
+    border-bottom: 3px solid #28303d;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.nav.view {
+    display: block;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.nav.view .inner {
+    padding: 16px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
 }
 
-.App-link {
-  color: #61dafb;
+.nav.view .inner > a {}
+.nav.view .inner > a > img {
+    width: 36px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* loading */
+.loading {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* error */
+.error {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
