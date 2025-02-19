@@ -9,7 +9,7 @@ figure {width: fit-content;height: fit-content;}
 table, th, td {border-collapse: collapse; border-spacing: 0;}
 
 body {
-    font-family: "Noto Sans KR", serif;
+    font-family: "Noto Sans KR", serif !important;
 }
 
 .nav {

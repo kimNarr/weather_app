@@ -6,19 +6,23 @@ import { useNavigate } from 'react-router-dom';
 
 
 function News() {
-    const [cate, setCate] = useState('Top');
+    const [cate, setCate] = useState('All');
     const navigate = useNavigate();
     const {data, isLoading, isError, error } = useNewsQuery(cate);
 
     const category = [
-        {id: 0, name: 'Top'},
-        {id: 1, name: 'business'},
-        {id: 2, name: 'entertainment'},
-        {id: 3, name: 'general'},
-        {id: 4, name: 'health'},
+        {id: 0, name: 'All'},
+        {id: 1, name: 'top'},
+        {id: 2, name: 'sports'},
+        {id: 3, name: 'technology'},
+        {id: 4, name: 'business'},
         {id: 5, name: 'science'},
-        {id: 6, name: 'sports'},
-        {id: 7, name: 'technology'},
+        {id: 6, name: 'entertainment'},
+        {id: 7, name: 'health'},
+        {id: 8, name: 'world'},
+        {id: 9, name: 'politics'},
+        {id: 10, name: 'environment'},
+        {id: 11, name: 'food'},
     ]
 
     console.log("news", data)
@@ -83,18 +87,18 @@ function News() {
                     <div className='news_list'>
                         <ul>
                             {
-                                data?.articles.map((item, idx)=>(
+                                data?.results.map((item, idx)=>(
                                     <li key={idx}>
                                         <div className='news_img'>
                                             <figure>
-                                                <img src={item.urlToImage === null ? './img/news/default.jpg' : item.urlToImage } alt={item.title} />
+                                                <img src={item.image_url === null ? './img/news/default.jpg' : item.image_url } alt={item.title} />
                                             </figure>
                                         </div>
                                         <div className='news_text'>
                                             <h3 className='title'>{item.title}</h3>
                                             <p className='description'>{item.description}</p>
                                             <p className='time'>{item.publishedAt}</p>
-                                            <a className='news_link' href={item.url} target='_blank'>view news</a>
+                                            <a className='news_link' href={item.link} target='_blank'>view news</a>
                                         </div>
                                     </li>
                                 ))

@@ -12,7 +12,6 @@ function Weather() {
     const [city, setCity] = useState('');
 
     const {params} = useParams();
-    console.log("w_params", params);
     
     const getCurrentLoaction = () => {
         navigator.geolocation.getCurrentPosition((position)=>{

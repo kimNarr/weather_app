@@ -77,6 +77,7 @@
     width: 100%;
 }
 .news_wrap > .inner .news .news_list > ul > li .news_text {
+    font-family: "Noto Sans KR", serif;
     padding: 0 16px 16px;
 }
 .news_wrap > .inner .news .news_list > ul > li .news_text .title {

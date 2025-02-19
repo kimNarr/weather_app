@@ -2,12 +2,12 @@ import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 
 const fetchNews = (queryData) => {
-    const api_key = 'dfe1a4e230db424b8f71cc15da280ae5';
+    const api_key = 'pub_64515215181728cbe7be384f9a473ecddce17';
     const cate = queryData.queryKey[1];
-    if(cate === 'Top') {
-      return axios.get(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${api_key}`)
+    if(cate === 'All') {
+      return axios.get(`https://newsdata.io/api/1/latest?country=us&apikey=${api_key}`)
     } else {
-      return axios.get(`https://newsapi.org/v2/top-headlines?country=us&category=${cate}&apiKey=${api_key}`)
+      return axios.get(`https://newsdata.io/api/1/latest?country=us&category=${cate}&apikey=${api_key}`)
     }
 }
 
