@@ -5,11 +5,8 @@ const fetchNews = (queryData) => {
     const api_key = 'dfe1a4e230db424b8f71cc15da280ae5';
     const cate = queryData.queryKey[1];
     if(cate === 'Top') {
-      console.log("1")
       return axios.get(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${api_key}`)
-
     } else {
-      console.log("2")
       return axios.get(`https://newsapi.org/v2/top-headlines?country=us&category=${cate}&apiKey=${api_key}`)
     }
 }

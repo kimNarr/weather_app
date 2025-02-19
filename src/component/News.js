@@ -2,9 +2,12 @@ import React, { useState } from 'react'
 import '../css/news.css'
 import { useNewsQuery } from '../Hooks/getNews'
 import { MoonLoader } from 'react-spinners';
+import { useNavigate } from 'react-router-dom';
+
 
 function News() {
     const [cate, setCate] = useState('Top');
+    const navigate = useNavigate();
     const {data, isLoading, isError, error } = useNewsQuery(cate);
 
     const category = [
@@ -55,8 +58,8 @@ function News() {
         )
     }
     if(isError) {
-        alert(error);
-        setCate('Top');
+        console.log("에러",error);
+        navigate('/');
     }
     return (
         <div className='news_wrap'>
