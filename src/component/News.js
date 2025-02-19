@@ -18,7 +18,7 @@ function News() {
         {id: 7, name: 'technology'},
     ]
 
-    console.log(data)
+    console.log("news", data)
 
     if(isLoading) {
     return (
@@ -53,6 +53,10 @@ function News() {
                 </div>
             </div>
         )
+    }
+    if(isError) {
+        alert(error);
+        setCate('Top');
     }
     return (
         <div className='news_wrap'>

@@ -3,7 +3,6 @@ import { useQuery } from "@tanstack/react-query";
 
 const fetchNews = (queryData) => {
     const api_key = 'dfe1a4e230db424b8f71cc15da280ae5';
-    console.log(queryData)
     const cate = queryData.queryKey[1];
     if(cate === 'Top') {
       console.log("1")
