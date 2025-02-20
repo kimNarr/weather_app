@@ -20,6 +20,7 @@ export const useForecastQuery = (lat, lon, city) => {
         select : (data) => {return data.data},
         retry : 1,
         gcTime : 5000*50,
+        staleTime: 4000*50,
         enabled: !!(lat && lon),
     })
 }

@@ -62,7 +62,8 @@ function News() {
         )
     }
     if(isError) {
-        console.log("에러",error);
+        alert(error);
+        navigate('/');
         
     }
     return (

@@ -4,14 +4,12 @@ import { MoonLoader } from 'react-spinners';
 import Header from './Header';
 import Forecast from './Forecast';
 import '../css/weather.css'
-import { useParams } from 'react-router-dom';
 
 function Weather() {
     const [lat, setLat] = useState();
     const [lon, setLon] = useState();
     const [city, setCity] = useState('');
 
-    const {params} = useParams();
     
     const getCurrentLoaction = () => {
         navigator.geolocation.getCurrentPosition((position)=>{
@@ -23,6 +21,8 @@ function Weather() {
     }
 
     const {data, isLoading, isError, error} = useWeatherQuery(lat, lon, city);
+
+    console.log("weather",data)
 
     const dayNight = data?.weather[0].icon.slice(2,3)
     
@@ -64,7 +64,7 @@ function Weather() {
                                 <img src={`./img/icon/${data?.weather[0].main}.svg`} alt={data?.weather[0].main} />
                             </figure>
                             <p className='desc'>{data?.weather[0].description}</p>
-                            <p className='temp'>{data?.main.temp}°</p>
+                            <p className='temp'>{data?.main.temp}<span>℃</span></p>
                         </div>
                     </div>
                     <div className='sub_info'>

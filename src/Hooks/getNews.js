@@ -19,5 +19,6 @@ export const useNewsQuery = (cate) => {
         retry : 1,
         gcTime : 5000*50,
         staleTime: 4000*50,
+        enabled: !!(cate),
     })
 }
