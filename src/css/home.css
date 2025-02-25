@@ -19,6 +19,7 @@
     flex-direction: row-reverse;
 }
 .home .inner .link_box > h2 {
+    width: 220px;
     font-size: 28px;
     font-weight: 900;
     text-align: center;
