@@ -81,5 +81,6 @@
     .home .inner .link_box a {
         width: 100px;
         height: 100px;
+        padding: 8px;
     }
 }
