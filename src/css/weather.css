@@ -121,7 +121,7 @@ header .search_box > button > img {
 
 .contents {
     width: 100%;
-    height: calc(100% - 200px);
+    height: fit-content;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     padding: 0 16px;
@@ -158,6 +158,7 @@ header .search_box > button > img {
 }
 .contents .main_info .main_weather .temp {
     font-size: clamp(36px, 3.33vw, 64px);
+    padding-left: 15px;
     font-weight: 900;
 }
 
@@ -345,7 +346,8 @@ header .search_box > button > img {
 }
 @media (max-width: 875px) {
     .weather_wrap > .inner {
-        padding: 32px 0 100px 0;
+        padding: 32px 0 0;
+        height: fit-content;
     }
     header .title_box .icon > img {
         margin-bottom: 32px;
@@ -360,26 +362,19 @@ header .search_box > button > img {
         grid-column: 3/6;
     }
     .contents .sub_info .sub_weather .forecast > ul {
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(6, 1fr);
     }
     .contents .sub_info .sub_weather .forecast .cities {
         justify-content: flex-start;
     }
 }
 
-@media (max-width: 610px) {
-    
-    .contents .sub_info .sub_weather .forecast > ul {
-        grid-template-columns: repeat(4, 1fr);
-    }
-}
-
-@media (max-width: 540px) {
+@media (max-width: 680px) {
     .weather_wrap {
         height: auto;
     }
     .weather_wrap > .inner {
-        padding: 16px 0 100px 0;
+        padding: 32px 0;
     }
     header .title_box .icon > img {
         margin-bottom: 38px;

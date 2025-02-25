@@ -64,7 +64,7 @@ function Weather() {
                                 <img src={`./img/icon/${data?.weather[0].main}.svg`} alt={data?.weather[0].main} />
                             </figure>
                             <p className='desc'>{data?.weather[0].description}</p>
-                            <p className='temp'>{data?.main.temp}<span>℃</span></p>
+                            <p className='temp'>{(data?.main.temp)?.toFixed(1)}<span>°</span></p>
                         </div>
                     </div>
                     <div className='sub_info'>
@@ -78,11 +78,11 @@ function Weather() {
                                     </li>
                                     <li>
                                         <figure><img src="./img/icon/temperature.svg" alt="temperature" /></figure>
-                                        <p>{data?.main.temp}℃</p>
+                                        <p>{(data?.main.temp)?.toFixed(1)}°</p>
                                     </li>
                                     <li>
                                         <figure><img src="./img/icon/air.svg" alt="air" /></figure>
-                                        <p>{data?.wind.speed}</p>
+                                        <p>{data?.wind.speed} ㎧</p>
                                     </li>
                                 </ul>
                             </div>

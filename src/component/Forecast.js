@@ -8,30 +8,47 @@ function Forecast({lat, lon, city, setCity}) {
     console.log("forecast", data)
 
     const [dailyData, setDailyData] = useState([])
-    const daily = [[],[],[],[],[],[]];
     const week = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"]
-
-    const today = new Date().getDate()
+    const today = new Date();
     
     const fliterDate = (data) => {
-        for(let i=0; i < data?.list.length; i++) {
-            const dt = Number(data?.list[i].dt_txt.slice(8,10));
-            if(dt === today) {
-                daily[0].push(data?.list[i])
-            } else {
-                daily[(dt-today)].push(data?.list[i])
+        let daily = [[],[],[],[],[],[]];
+        let diff = 0;
+        let last = 0;
+        for(let i = 0; i < daily.length; i++) {
+            for(let j = 0; j < data?.list.length; j++) {
+                const lastdt = new Date(data?.list[j].dt_txt);
+                if(lastdt.getDate() - today.getDate() == diff){
+                    daily[i].push(data?.list[j])
+                    last = j;
+                }
             }
+            diff= new Date(data?.list[last+1]?.dt_txt).getDate() - today.getDate();
         }
         setDailyData(daily);
-    }
+        
 
+        // for(let i=0; i < data?.list.length; i++) {
+        //     const dt = Number(data?.list[i].dt_txt.slice(8,10));
+        //     if(dt === today) {
+        //         daily[0].push(data?.list[i])
+        //     } else {
+        //         console.log('dt', dt)
+        //         console.log('today', today)
+        //         daily[(dt-today)].push(data?.list[i])
+        //     }
+        // }
+        // setDailyData(daily);
+    }
+    
     useEffect(()=>{
         if(data !== undefined) {
             fliterDate(data);
         }
     },[data])
+    console.log(dailyData);
 
-    console.log(dailyData)
+    // console.log("dailyData",dailyData)
     
 
     // const cities = [
@@ -55,9 +72,9 @@ function Forecast({lat, lon, city, setCity}) {
                         if(idx < 8) {
                             return (
                                 <li key={idx}>
-                                    <p className='time'>{item.dt_txt.slice(11,13)}:00</p>
-                                    <figure><img src={`./img/icon/${item.weather[0].main}.svg`} alt={item.weather[0].main} /></figure>
-                                    <p className='temp'>{item.main.temp}°</p>
+                                    <p className='time'>{item?.dt_txt.slice(11,13)}:00</p>
+                                    <figure><img src={`./img/icon/${item?.weather[0].main}.svg`} alt={item?.weather[0].main} /></figure>
+                                    <p className='temp'>{(item?.main.temp)?.toFixed(1)}°</p>
                                 </li>
                             );
                         }
@@ -67,11 +84,11 @@ function Forecast({lat, lon, city, setCity}) {
             <h3>daily</h3>
             <ul>
                 {
-                    dailyData.map((item, idx)=> (
+                    dailyData?.map((item, idx)=> (
                         <li key={idx}>
-                            <p className='time'>{today - new Date(item[0].dt_txt).getDate() === 0 ?  "NOW" : week[new Date(item[0].dt_txt).getDay()]}</p>
+                            <p className='time'>{today - new Date(item[0]?.dt_txt).getDate() === 0 ?  "NOW" : week[new Date(item[0]?.dt_txt).getDay()]}</p>
                             <figure><img src={`./img/icon/${item[0]?.weather[0]?.main}.svg`} alt={item[0]?.weather[0]?.main} /></figure>
-                            <p className='temp'>{item[0]?.main?.temp}°</p>
+                            <p className='temp'>{(item[0]?.main?.temp)?.toFixed(1)}°</p>
                         </li>
                     ))
                 }
