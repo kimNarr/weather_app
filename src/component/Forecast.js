@@ -4,28 +4,46 @@ import { useForecastQuery } from '../Hooks/getForecast'
 
 function Forecast({lat, lon, city, setCity}) {
 
-    const {data, isLoading, isError, error} = useForecastQuery(lat, lon, city)
-    console.log("forecast", data)
+    const {data} = useForecastQuery(lat, lon, city)
+    // console.log("forecast", data)
 
     const [dailyData, setDailyData] = useState([])
     const week = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"]
     const today = new Date();
     
     const fliterDate = (data) => {
-        let daily = [[],[],[],[],[],[]];
-        let diff = 0;
-        let last = 0;
-        for(let i = 0; i < daily.length; i++) {
-            for(let j = 0; j < data?.list.length; j++) {
-                const lastdt = new Date(data?.list[j].dt_txt);
-                if(lastdt.getDate() - today.getDate() == diff){
-                    daily[i].push(data?.list[j])
-                    last = j;
-                }
+        // let daily = [[],[],[],[],[],[]];
+        // let diff = 0;
+        // let last = 0;
+        // for(let i = 0; i < daily.length; i++) {
+        //     for(let j = 0; j < data?.list.length; j++) {
+        //         const lastdt = new Date(data?.list[j].dt_txt);
+        //         if(lastdt.getDate() - today.getDate() == diff){
+        //             daily[i].push(data?.list[j])
+        //             last = j;
+        //         }
+        //     }
+        //     diff= new Date(data?.list[last+1]?.dt_txt).getDate() - today.getDate();
+        // }
+        // setDailyData(daily);
+
+        const daily = [];
+        data?.list.forEach((item) => {
+            const date = item.dt_txt.split(" ")[0];
+
+            // console.log("date", date);
+
+            let index = daily.findIndex((group)=> group.length > 0 && group[0].dt_txt.startsWith(date));
+            // console.log("index", index)
+
+            if(index !== -1) {
+                daily[index].push(item)
+            } else {
+                daily.push([item])
             }
-            diff= new Date(data?.list[last+1]?.dt_txt).getDate() - today.getDate();
-        }
-        setDailyData(daily);
+
+            setDailyData(daily)
+        });
         
 
         // for(let i=0; i < data?.list.length; i++) {
