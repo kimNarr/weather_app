@@ -152,6 +152,12 @@ header .search_box > button > img {
 .contents .main_info .main_weather > figure > img {
     width: 150px;
 }
+.contents .main_info .main_weather > figure.spin > img {
+    animation: 20s linear 1s infinite running spin; 
+}
+.contents .main_info .main_weather > figure.wave > img {
+    animation: 1.5s linear 1s infinite alternate wave; 
+}
 .contents .main_info .main_weather .desc {
     font-size: 24px;
     font-weight: 900;
@@ -166,6 +172,15 @@ header .search_box > button > img {
     font-weight: 600;
 }
 
+@keyframes spin {
+    0% {transform: rotate(0);}
+    100% {transform: rotate(360deg);}
+}
+
+@keyframes wave {
+    0% {transform: translateX(-5%);}
+    100% {transform: translateX(5%);}
+}
 
 .contents .sub_info {
     position: relative;

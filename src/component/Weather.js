@@ -60,7 +60,7 @@ function Weather() {
                 <div className='contents'>
                     <div className='main_info'>
                         <div className='main_weather'>
-                            <figure>
+                            <figure className={data?.weather[0].main === "Clear" ? "spin" : "wave"}>
                                 <img src={`./img/icon/${data?.weather[0].main}.svg`} alt={data?.weather[0].main} />
                             </figure>
                             <p className='desc'>{data?.weather[0].description}</p>
