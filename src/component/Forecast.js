@@ -55,7 +55,6 @@ function Forecast({lat, lon, city, setCity}) {
         // }
         // setDailyData(daily);
     }
-    
     useEffect(()=>{
         if(data !== undefined) {
             fliterDate(data);
@@ -96,7 +95,7 @@ function Forecast({lat, lon, city, setCity}) {
                 {
                     dailyData?.map((item, idx)=> (
                         <li key={idx}>
-                            <p className='time'>{today - new Date(item[0]?.dt_txt).getDate() === 0 ?  "NOW" : week[new Date(item[0]?.dt_txt).getDay()]}</p>
+                            <p className='time'>{today.getDate() == item[0]?.dt_txt.slice(8,10) ?  "NOW" : week[new Date(item[0]?.dt_txt).getDay()]}</p>
                             <figure><img src={`./img/icon/${item[0]?.weather[0]?.main}.svg`} alt={item[0]?.weather[0]?.main} /></figure>
                             <p className='temp'>{(item[0]?.main?.temp)?.toFixed(1)}°</p>
                         </li>
