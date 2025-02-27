@@ -25,8 +25,6 @@ function News() {
         {id: 11, name: 'food'},
     ]
 
-    console.log("news", data)
-
     if(isLoading) {
     return (
             <div className='news_wrap'>
@@ -64,7 +62,6 @@ function News() {
     if(isError) {
         alert(error);
         navigate('/');
-        
     }
     return (
         <div className='news_wrap'>

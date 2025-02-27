@@ -9,7 +9,6 @@ function Weather() {
     const [lat, setLat] = useState();
     const [lon, setLon] = useState();
     const [city, setCity] = useState('');
-
     
     const getCurrentLoaction = () => {
         navigator.geolocation.getCurrentPosition((position)=>{
@@ -22,11 +21,7 @@ function Weather() {
 
     const {data, isLoading, isError, error} = useWeatherQuery(lat, lon, city);
 
-    console.log("weather",data)
-
     const dayNight = data?.weather[0].icon.slice(2,3)
-    
-
 
     useEffect(()=>{
         getCurrentLoaction();

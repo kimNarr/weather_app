@@ -5,13 +5,28 @@ import { useForecastQuery } from '../Hooks/getForecast'
 function Forecast({lat, lon, city, setCity}) {
 
     const {data} = useForecastQuery(lat, lon, city)
-    // console.log("forecast", data)
 
     const [dailyData, setDailyData] = useState([])
     const week = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"]
     const today = new Date();
     
     const fliterDate = (data) => {
+        const daily = [];
+        data?.list.forEach((item) => {
+            const date = item.dt_txt.split(" ")[0];
+
+            let index = daily.findIndex((group)=> group.length > 0 && group[0].dt_txt.startsWith(date));
+
+            if(index !== -1) {
+                daily[index].push(item)
+            } else {
+                daily.push([item])
+            }
+
+            setDailyData(daily)
+        });
+
+
         // let daily = [[],[],[],[],[],[]];
         // let diff = 0;
         // let last = 0;
@@ -26,25 +41,7 @@ function Forecast({lat, lon, city, setCity}) {
         //     diff= new Date(data?.list[last+1]?.dt_txt).getDate() - today.getDate();
         // }
         // setDailyData(daily);
-
-        const daily = [];
-        data?.list.forEach((item) => {
-            const date = item.dt_txt.split(" ")[0];
-
-            // console.log("date", date);
-
-            let index = daily.findIndex((group)=> group.length > 0 && group[0].dt_txt.startsWith(date));
-            // console.log("index", index)
-
-            if(index !== -1) {
-                daily[index].push(item)
-            } else {
-                daily.push([item])
-            }
-
-            setDailyData(daily)
-        });
-        
+    
 
         // for(let i=0; i < data?.list.length; i++) {
         //     const dt = Number(data?.list[i].dt_txt.slice(8,10));
@@ -64,10 +61,6 @@ function Forecast({lat, lon, city, setCity}) {
             fliterDate(data);
         }
     },[data])
-    console.log(dailyData);
-
-    // console.log("dailyData",dailyData)
-    
 
     // const cities = [
     //     {id: 0, name: 'Seoul'},
@@ -79,7 +72,6 @@ function Forecast({lat, lon, city, setCity}) {
     //     {id: 6, name: 'Ulsan'},
     //     {id: 7, name: 'London'},
     // ]
-
 
     return (
         <div className='forecast'>
